@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="PetriWars"
+run/main_scene="res://scenes/base.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+TileManager="*res://scripts/tiles/tile_manager.gd"
+TileTypes="*res://scripts/tiles/tile_types.gd"
+TileBuildings="*res://scripts/tiles/tile_buildings.gd"
 
 [display]
 
@@ -33,6 +40,8 @@ folder_colors={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.152941, 0.0823529, 0.0745098, 1)
