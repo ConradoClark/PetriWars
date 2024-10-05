@@ -2,6 +2,7 @@ extends Node2D
 
 class_name BuildingTile
 
+@export var unit: Unit
 var layer: TileMapLayer
 var cell_pos: Vector2i
 

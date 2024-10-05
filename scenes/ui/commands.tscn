@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8ethyrpd21ln"]
+
+[ext_resource type="Texture2D" uid="uid://owsnl8ux8smr" path="res://sprites/ui/border.png" id="1_5dmqc"]
+[ext_resource type="Texture2D" uid="uid://bk0lsp2tc187m" path="res://sprites/ui/border_texture.png" id="2_2ucig"]
+[ext_resource type="FontFile" uid="uid://btsn55ejc4vra" path="res://fonts/Not Jam UI 12.ttf" id="3_lwduh"]
+[ext_resource type="FontFile" uid="uid://bcco8i5wok5h3" path="res://fonts/NotJamChunky8.ttf" id="4_kp7sh"]
+[ext_resource type="Script" path="res://scripts/ui/updateable_label.gd" id="5_xuj57"]
+
+[node name="Commands" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_5dmqc")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="TextureRect" type="NinePatchRect" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_2ucig")
+patch_margin_left = 10
+patch_margin_top = 2
+patch_margin_right = 10
+patch_margin_bottom = 2
+axis_stretch_horizontal = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="ObjectName" type="RichTextLabel" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.670588, 0.682353, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0.152941, 0.0823529, 0.0745098, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("3_lwduh")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "COCCUS"
+scroll_active = false
+script = ExtResource("5_xuj57")
+
+[node name="ObjectDescription" type="RichTextLabel" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.835294, 0.709804, 0.619608, 1)
+theme_override_colors/font_shadow_color = Color(0.152941, 0.0823529, 0.0745098, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("4_kp7sh")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "center of the hive mind"
+scroll_active = false
+script = ExtResource("5_xuj57")
+type = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="CommandDescription" type="RichTextLabel" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer2/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/default_color = Color(0.835294, 0.709804, 0.619608, 1)
+theme_override_colors/font_shadow_color = Color(0.152941, 0.0823529, 0.0745098, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("4_kp7sh")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[right]grows bacteria"
+scroll_active = false
+script = ExtResource("5_xuj57")
+type = 3
+prefix = "[right]"
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 5
+
+[node name="CommandName" type="RichTextLabel" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer3"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.698039, 0.588235, 0.662745, 1)
+theme_override_colors/font_shadow_color = Color(0.152941, 0.0823529, 0.0745098, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("3_lwduh")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]Grow Bacillus"
+scroll_active = false
+script = ExtResource("5_xuj57")
+type = 2
+prefix = "[center]"

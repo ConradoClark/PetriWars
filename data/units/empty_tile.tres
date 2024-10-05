@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://dnk7dvw246oph"]
+
+[ext_resource type="Script" path="res://scripts/objects/command.gd" id="1_jfg3d"]
+[ext_resource type="Script" path="res://scripts/objects/unit.gd" id="2_tp84q"]
+
+[resource]
+script = ExtResource("2_tp84q")
+unit_name = "[color=eac9ba]Culture Agar"
+unit_description = "can grow bacteria"
+life = 0
+max_life = 0
+type = 1
+commands = Array[ExtResource("1_jfg3d")]([])

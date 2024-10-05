@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://csdpcys3vjige"]
+
+[ext_resource type="PackedScene" uid="uid://wtyjtccllwa" path="res://scenes/ui/resources.tscn" id="1_8h7lx"]
+[ext_resource type="PackedScene" uid="uid://b8ethyrpd21ln" path="res://scenes/ui/commands.tscn" id="2_a2es3"]
+
+[node name="UiCanvas" type="CanvasLayer"]
+
+[node name="Resources" parent="." instance=ExtResource("1_8h7lx")]
+
+[node name="Commands" parent="." instance=ExtResource("2_a2es3")]

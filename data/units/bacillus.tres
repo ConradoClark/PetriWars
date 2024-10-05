@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://bil5pfleyshow"]
+
+[ext_resource type="Script" path="res://scripts/objects/command.gd" id="1_4sgyh"]
+[ext_resource type="Script" path="res://scripts/objects/unit.gd" id="2_0hqjk"]
+
+[resource]
+script = ExtResource("2_0hqjk")
+unit_name = "Bacillus"
+unit_description = "colony growth agent"
+life = 5
+max_life = 5
+type = 0
+commands = Array[ExtResource("1_4sgyh")]([])

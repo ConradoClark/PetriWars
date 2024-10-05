@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfnwpgdutys1j"]
+[gd_scene load_steps=7 format=3 uid="uid://bfnwpgdutys1j"]
 
 [ext_resource type="TileSet" uid="uid://t2qr70nths0p" path="res://tileset/main_tileset.tres" id="1_igomx"]
 [ext_resource type="Texture2D" uid="uid://do0jse13qxu3b" path="res://sprites/ui/grid.png" id="1_joy1x"]
 [ext_resource type="PackedScene" uid="uid://sjjuq2b71h7i" path="res://scenes/ui/selection.tscn" id="2_hxa7r"]
+[ext_resource type="Script" path="res://scripts/tiles/map_layer_setter.gd" id="3_hjse1"]
+[ext_resource type="PackedScene" uid="uid://csdpcys3vjige" path="res://scenes/ui/ui_canvas.tscn" id="5_dfy5f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30652"]
+size = Vector2(479, 199)
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,11 +15,24 @@
 position = Vector2(240, 135)
 texture = ExtResource("1_joy1x")
 region_enabled = true
-region_rect = Rect2(3, 4, 480, 270)
+region_rect = Rect2(8, 9, 480, 270)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray(0, 0, 4, 0, 3, 0, 4, 0, 0, 0, 0, 0, 1, 0, 5, 0, 4, 0, 4, 0, 0, 0, 0, 0, 2, 0, 6, 0, 4, 0, 4, 0, 0, 0, 0, 0, 3, 0)
+tile_map_data = PackedByteArray(0, 0, 4, 0, 6, 0, 4, 0, 0, 0, 0, 0, 1, 0)
 tile_set = ExtResource("1_igomx")
 
-[node name="Selection" parent="." instance=ExtResource("2_hxa7r")]
+[node name="MapLayerSetter" type="Node" parent="TileMapLayer" node_paths=PackedStringArray("map_layer")]
+script = ExtResource("3_hjse1")
+map_layer = NodePath("..")
+
+[node name="Selection" parent="." node_paths=PackedStringArray("clickable_area") instance=ExtResource("2_hxa7r")]
 position = Vector2(72, 56)
+clickable_area = NodePath("../Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(239.5, 122.5)
+shape = SubResource("RectangleShape2D_30652")
+
+[node name="UiCanvas" parent="." instance=ExtResource("5_dfy5f")]

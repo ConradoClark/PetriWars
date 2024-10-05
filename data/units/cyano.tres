@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://dtvchin2wgukd"]
+
+[ext_resource type="Script" path="res://scripts/objects/command.gd" id="1_1j37p"]
+[ext_resource type="Script" path="res://scripts/objects/unit.gd" id="2_e36ys"]
+
+[resource]
+script = ExtResource("2_e36ys")
+unit_name = "Cyano"
+unit_description = "harvester of nutrition"
+life = 3
+max_life = 3
+type = 0
+commands = Array[ExtResource("1_1j37p")]([])

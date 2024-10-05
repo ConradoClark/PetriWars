@@ -1,8 +1,15 @@
 extends Node
 
 var tiles: Dictionary = {}
+var map_layer: TileMapLayer
 
-func get_tile(pos: Vector2i):
+func set_layer(layer: TileMapLayer):
+  layer = map_layer
+  
+func has_tile(pos: Vector2i):
+  return tiles.has(pos)
+
+func get_tile(pos: Vector2i) -> BuildingTile:
   if not tiles.has(pos): return null
   return tiles[pos]
   

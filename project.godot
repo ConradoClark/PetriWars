@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 TileManager="*res://scripts/tiles/tile_manager.gd"
 TileTypes="*res://scripts/tiles/tile_types.gd"
 TileBuildings="*res://scripts/tiles/tile_buildings.gd"
+Globals="*res://scripts/globals.gd"
+UIEvents="*res://scripts/ui/ui_events.gd"
 
 [display]
 
@@ -33,6 +35,8 @@ window/stretch/scale_mode="integer"
 [file_customization]
 
 folder_colors={
+"res://data/": "blue",
+"res://fonts/": "green",
 "res://scenes/": "yellow",
 "res://scripts/": "pink",
 "res://sprites/": "green"
@@ -45,3 +49,5 @@ textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.152941, 0.0823529, 0.0745098, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

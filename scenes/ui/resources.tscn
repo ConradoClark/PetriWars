@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://wtyjtccllwa"]
+
+[ext_resource type="Texture2D" uid="uid://owsnl8ux8smr" path="res://sprites/ui/border.png" id="1_nu35q"]
+[ext_resource type="Texture2D" uid="uid://bk0lsp2tc187m" path="res://sprites/ui/border_texture.png" id="2_2anap"]
+[ext_resource type="Texture2D" uid="uid://b00yyx720ca5m" path="res://sprites/ui/nutrition_resource.png" id="3_l1cqc"]
+[ext_resource type="FontFile" uid="uid://btsn55ejc4vra" path="res://fonts/Not Jam UI 12.ttf" id="4_mo71g"]
+[ext_resource type="Texture2D" uid="uid://c4eyib550nt6b" path="res://sprites/ui/dna_resource.png" id="5_0swk5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ge6ln"]
+font = ExtResource("4_mo71g")
+font_size = 12
+font_color = Color(0.670588, 0.580392, 0.478431, 1)
+outline_size = 1
+outline_color = Color(0.572549, 0.34902, 0.427451, 1)
+shadow_color = Color(0.203922, 0.141176, 0.152941, 1)
+shadow_offset = Vector2(0, 2)
+
+[node name="Resources" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+texture = ExtResource("1_nu35q")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="TextureRect" type="NinePatchRect" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_2anap")
+patch_margin_left = 10
+patch_margin_top = 2
+patch_margin_right = 10
+patch_margin_bottom = 2
+axis_stretch_horizontal = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 16.0
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Nutrition" type="TextureRect" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("3_l1cqc")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "01"
+label_settings = SubResource("LabelSettings_ge6ln")
+vertical_alignment = 2
+
+[node name="Nutrition2" type="TextureRect" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("5_0swk5")
+stretch_mode = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "01"
+label_settings = SubResource("LabelSettings_ge6ln")
+vertical_alignment = 2

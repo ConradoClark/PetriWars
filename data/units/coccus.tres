@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://cv47juhh0ctj4"]
+
+[ext_resource type="Script" path="res://scripts/objects/command.gd" id="1_2g0jk"]
+[ext_resource type="Script" path="res://scripts/objects/unit.gd" id="2_qq81y"]
+
+[resource]
+script = ExtResource("2_qq81y")
+unit_name = "[color=ffb5c2]Coccus"
+unit_description = "nexus of the hive mind"
+life = 10
+max_life = 10
+type = 0
+commands = Array[ExtResource("1_2g0jk")]([])

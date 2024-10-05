@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8tlib2626qtc"]
+[gd_scene load_steps=20 format=3 uid="uid://c8tlib2626qtc"]
 
 [ext_resource type="Script" path="res://scripts/tiles/building_tile.gd" id="1_ccjvr"]
+[ext_resource type="Resource" uid="uid://dtvchin2wgukd" path="res://data/units/cyano.tres" id="2_cv3bn"]
 [ext_resource type="Texture2D" uid="uid://bmd7qm6kur2e5" path="res://sprites/cyano_anim_38x36.png" id="2_ohmc8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obmxv"]
@@ -118,6 +119,7 @@ animations = [{
 
 [node name="Cyano" type="Node2D"]
 script = ExtResource("1_ccjvr")
+unit = ExtResource("2_cv3bn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_foisk")
