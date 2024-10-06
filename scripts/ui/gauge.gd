@@ -19,6 +19,9 @@ func _ready():
     
 func _adjust_size():
   gauge.size.x = lerp(min_size, max_size, starting_value)
+  
+func set_value(value: float):
+  gauge.size.x = lerp(min_size, max_size, value)
 
 func _tick():
   while timer.time_left > 0.:

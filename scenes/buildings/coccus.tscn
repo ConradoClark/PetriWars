@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dh7bdesc7w6xe"]
+[gd_scene load_steps=24 format=3 uid="uid://dh7bdesc7w6xe"]
 
 [ext_resource type="Script" path="res://scripts/tiles/building_tile.gd" id="1_hrsju"]
 [ext_resource type="Texture2D" uid="uid://ctumuoeekdw31" path="res://sprites/coccus_anim_41x37.png" id="2_1d228"]
 [ext_resource type="Resource" uid="uid://cv47juhh0ctj4" path="res://data/units/coccus.tres" id="2_5atkx"]
 [ext_resource type="Script" path="res://scripts/objects/buildings/generate_nutrition.gd" id="4_bn64m"]
+[ext_resource type="Script" path="res://scripts/objects/buildings/coccus_identifier.gd" id="5_tpd8r"]
+[ext_resource type="Script" path="res://scripts/objects/buildings/coccus_destroyed.gd" id="6_sps2s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_esepm"]
 atlas = ExtResource("2_1d228")
@@ -118,6 +120,8 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oucgy"]
+
 [node name="Coccus" type="Node2D"]
 script = ExtResource("1_hrsju")
 unit = ExtResource("2_5atkx")
@@ -136,3 +140,17 @@ frame_progress = 0.749126
 script = ExtResource("4_bn64m")
 reference = NodePath("..")
 amount = 1
+
+[node name="CoccusIdentifier" type="Node" parent="." node_paths=PackedStringArray("coccus")]
+script = ExtResource("5_tpd8r")
+coccus = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_oucgy")
+
+[node name="CoccusDestroyed" type="Node" parent="." node_paths=PackedStringArray("coccus")]
+script = ExtResource("6_sps2s")
+coccus = NodePath("..")

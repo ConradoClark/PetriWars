@@ -16,3 +16,4 @@ enum Direction {
 @export var directions: Array[Direction]
 @export var spawns: Array[EnemySpawn]
 @export var duration_seconds: float
+@export var wait_time_seconds: float

@@ -11,6 +11,7 @@ var cell_pos: Vector2i
 var selected: bool
 var life: int
 var built: bool = false
+var alive:bool = true
 
 const LIFE_GAUGE = preload("res://scenes/ui/life_gauge.tscn") as PackedScene
 const BUILD_GAUGE = preload("res://scenes/ui/build_gauge.tscn") as PackedScene
@@ -22,6 +23,8 @@ var life_gauge_offset = Vector2(0,-14)
 
 signal selected_changed
 signal on_built
+signal on_damage(amount: int)
+signal on_death
 
 func _ready():
   layer = get_parent()
@@ -54,7 +57,7 @@ func _on_build_finished():
 func _initialize_life_gauge():
   life_gauge = LIFE_GAUGE.instantiate() as Gauge
   life_gauge.starting_value = 1.
-  life_gauge.visible = selected
+  life_gauge.visible = selected or life < unit.max_life
   add_child(life_gauge)
   call_deferred("_reposition_life_gauge")
   
@@ -67,5 +70,15 @@ func _setup_build_gauge():
 
 func _selected_object_changed(unit: Unit):
   selected = Globals.last_selected_pos == cell_pos
-  if life_gauge: life_gauge.visible = selected
+  if life_gauge: life_gauge.visible = selected or life < unit.max_life
   selected_changed.emit()
+  
+func damage(amount: int):
+  life = clamp(life-amount, 0, unit.max_life)
+  life_gauge.set_value(life / float(unit.max_life))
+  on_damage.emit(amount)
+  life_gauge.visible = selected or life < unit.max_life
+  if life == 0:
+    alive = false
+    on_death.emit()
+    TileManager.remove_tile(cell_pos)

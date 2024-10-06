@@ -23,6 +23,7 @@ TileBuildings="*res://scripts/tiles/tile_buildings.gd"
 Globals="*res://scripts/globals.gd"
 UIEvents="*res://scripts/ui/ui_events.gd"
 Stats="*res://scripts/stats.gd"
+SoundManager="*res://scripts/sound_manager.gd"
 
 [display]
 
@@ -42,6 +43,12 @@ folder_colors={
 "res://scripts/": "pink",
 "res://sprites/": "green"
 }
+
+[layer_names]
+
+2d_physics/layer_1="Buildings"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Etc"
 
 [rendering]
 

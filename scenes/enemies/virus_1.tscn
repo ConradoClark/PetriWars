@@ -1,6 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpj7cu81mlcno"]
+[gd_scene load_steps=14 format=3 uid="uid://dpj7cu81mlcno"]
 
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_hvj1f"]
 [ext_resource type="Texture2D" uid="uid://l6a0bry55uqo" path="res://sprites/virus_1.png" id="1_or0lj"]
+[ext_resource type="Texture2D" uid="uid://difbutex2dwet" path="res://sprites/shadow.png" id="2_hwfvx"]
+[ext_resource type="Script" path="res://scripts/enemies/jump_up_and_down.gd" id="4_p4xxi"]
+[ext_resource type="Script" path="res://scripts/enemies/move_towards_coccus.gd" id="5_i8jfd"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_attack_building.gd" id="6_sw7rh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhj14"]
 atlas = ExtResource("1_or0lj")
@@ -38,9 +43,52 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="Virus1" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_k6lom"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y3lda"]
+
+[node name="Virus1" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_hvj1f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(0, 4)
+texture = ExtResource("2_hwfvx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_wp6nw")
 autoplay = "default"
 frame_progress = 0.0732481
+
+[node name="JumpUpAndDown" type="Node" parent="AnimatedSprite2D" node_paths=PackedStringArray("reference")]
+script = ExtResource("4_p4xxi")
+reference = NodePath("..")
+jump_height = 4.0
+jump_frequency_seconds = 1.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k6lom")
+
+[node name="MoveTowardsCoccus" type="Node" parent="." node_paths=PackedStringArray("reference")]
+script = ExtResource("5_i8jfd")
+reference = NodePath("..")
+speed = 15.0
+move_time_seconds = 1.0
+pause_time_seconds = 1.5
+
+[node name="Range" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_y3lda")
+
+[node name="EnemyAttackBuilding" type="Node" parent="." node_paths=PackedStringArray("reference", "sprite", "movement", "vision_area")]
+script = ExtResource("6_sw7rh")
+reference = NodePath("..")
+sprite = NodePath("../AnimatedSprite2D")
+movement = NodePath("../MoveTowardsCoccus")
+vision_area = NodePath("../Range")

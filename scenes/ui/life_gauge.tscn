@@ -15,6 +15,7 @@ grow_vertical = 2
 script = ExtResource("1_1i1tn")
 reference = NodePath(".")
 gauge = NodePath("GaugeBorder/GaugeTexture")
+min_size = 1.0
 max_size = 12.0
 
 [node name="GaugeBorder" type="NinePatchRect" parent="."]

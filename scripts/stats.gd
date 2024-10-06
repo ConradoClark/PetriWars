@@ -1,11 +1,16 @@
 extends Node
 
-var nutrition: int = 30
+var nutrition: int = 3
 var dna: int
 var enemies_killed: int
 
 func _init():
   call_deferred("add_nutrition", 0)
+  
+func reset_stats():
+  nutrition = 3
+  dna = 0
+  enemies_killed = 0 
 
 func add_nutrition(amount: int):
   nutrition += amount

@@ -3,6 +3,9 @@ extends Node
 var tiles: Dictionary = {}
 var map_layer: TileMapLayer
 
+func reset_tiles():
+  tiles.clear()
+
 func set_layer(layer: TileMapLayer):
   layer = map_layer
   
@@ -21,6 +24,7 @@ func add_tile(pos: Vector2i, tile: BuildingTile):
 func remove_tile(pos: Vector2i):
   if not tiles.has(pos): return
   tiles.erase(pos)
+  map_layer.erase_cell(pos)
   
 func is_adjacent_to_tiles(pos: Vector2i, amount: int, tag: String) -> bool:
   var count = 0

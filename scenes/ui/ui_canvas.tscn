@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://csdpcys3vjige"]
+[gd_scene load_steps=4 format=3 uid="uid://csdpcys3vjige"]
 
 [ext_resource type="PackedScene" uid="uid://wtyjtccllwa" path="res://scenes/ui/resources.tscn" id="1_8h7lx"]
 [ext_resource type="PackedScene" uid="uid://b8ethyrpd21ln" path="res://scenes/ui/commands.tscn" id="2_a2es3"]
+[ext_resource type="Script" path="res://scripts/ui/ui_canvas.gd" id="3_3t4ab"]
 
 [node name="UiCanvas" type="CanvasLayer"]
 
 [node name="Resources" parent="." instance=ExtResource("1_8h7lx")]
 
 [node name="Commands" parent="." instance=ExtResource("2_a2es3")]
+
+[node name="UICanvas" type="Node" parent="." node_paths=PackedStringArray("canvas")]
+script = ExtResource("3_3t4ab")
+canvas = NodePath("..")

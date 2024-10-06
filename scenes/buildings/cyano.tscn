@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c8tlib2626qtc"]
+[gd_scene load_steps=39 format=3 uid="uid://c8tlib2626qtc"]
 
 [ext_resource type="Script" path="res://scripts/tiles/building_tile.gd" id="1_ccjvr"]
 [ext_resource type="Resource" uid="uid://dtvchin2wgukd" path="res://data/units/cyano.tres" id="2_cv3bn"]
@@ -232,6 +232,8 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4g5ts"]
+
 [node name="Cyano" type="Node2D"]
 script = ExtResource("1_ccjvr")
 unit = ExtResource("2_cv3bn")
@@ -251,3 +253,9 @@ frame_progress = 0.265166
 script = ExtResource("4_o2v2o")
 reference = NodePath("..")
 amount = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4g5ts")
