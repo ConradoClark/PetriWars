@@ -1,9 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://bjcpo63eubliv"]
+[gd_scene load_steps=40 format=3 uid="uid://bjcpo63eubliv"]
 
 [ext_resource type="Script" path="res://scripts/tiles/building_tile.gd" id="1_hg6h3"]
 [ext_resource type="Resource" uid="uid://cevgq080sqrgy" path="res://data/units/pseudo.tres" id="2_veghe"]
 [ext_resource type="Texture2D" uid="uid://63tb5m4mia6q" path="res://sprites/pseudo_anim_24x24.png" id="3_qorp1"]
 [ext_resource type="Texture2D" uid="uid://daip1hi7wtkvq" path="res://sprites/pseudo_building_30x30.png" id="4_xliw6"]
+[ext_resource type="Script" path="res://scripts/objects/buildings/find_target.gd" id="5_nms02"]
+[ext_resource type="Script" path="res://scripts/objects/buildings/building_shoot_projectile.gd" id="6_j35iu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tj2h6"]
 atlas = ExtResource("3_qorp1")
@@ -232,6 +234,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwotb"]
+radius = 24.0
 
 [node name="Pseudo" type="Node2D"]
 script = ExtResource("1_hg6h3")
@@ -254,3 +257,22 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_gwotb")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_gwotb")
+
+[node name="FindTarget" type="Node" parent="." node_paths=PackedStringArray("tile", "area")]
+script = ExtResource("5_nms02")
+tile = NodePath("..")
+area = NodePath("../AttackRange")
+
+[node name="BuildingShootProjectile" type="Node" parent="." node_paths=PackedStringArray("reference", "target_finder")]
+script = ExtResource("6_j35iu")
+reference = NodePath("..")
+target_finder = NodePath("../FindTarget")
+cooldown_ms = 300.0
+projectile_path = "res://scenes/projectiles/pseudo_projectile.tscn"

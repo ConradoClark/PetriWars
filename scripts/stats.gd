@@ -8,7 +8,7 @@ func _init():
   call_deferred("add_nutrition", 0)
   
 func reset_stats():
-  nutrition = 3
+  nutrition = 30
   dna = 0
   enemies_killed = 0 
 

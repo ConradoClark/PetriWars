@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfnwpgdutys1j"]
+[gd_scene load_steps=15 format=3 uid="uid://bfnwpgdutys1j"]
 
 [ext_resource type="Script" path="res://scripts/objects/initialize_base.gd" id="1_4ejr4"]
 [ext_resource type="TileSet" uid="uid://t2qr70nths0p" path="res://tileset/main_tileset.tres" id="1_igomx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/enemy_wave.gd" id="7_lerny"]
 [ext_resource type="Script" path="res://scripts/enemies/enemy_spawn.gd" id="8_4faql"]
 [ext_resource type="Script" path="res://scripts/enemies/enemy_spawner.gd" id="8_t8yr0"]
+[ext_resource type="Script" path="res://scripts/projectiles/projectile_container.gd" id="10_ds36k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30652"]
 size = Vector2(479, 199)
@@ -43,7 +44,7 @@ region_enabled = true
 region_rect = Rect2(8, 9, 480, 270)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray(0, 0, 23, 0, 7, 0, 4, 0, 0, 0, 0, 0, 1, 0)
+tile_map_data = PackedByteArray(0, 0, 14, 0, 7, 0, 4, 0, 0, 0, 0, 0, 1, 0)
 tile_set = ExtResource("1_igomx")
 
 [node name="MapLayerSetter" type="Node" parent="TileMapLayer" node_paths=PackedStringArray("map_layer")]
@@ -64,11 +65,42 @@ shape = SubResource("RectangleShape2D_30652")
 
 [node name="UiCanvas" parent="." instance=ExtResource("5_dfy5f")]
 
-[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("east_reference")]
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("east_reference", "west_reference", "north_reference", "south_reference", "northeast_reference", "northwest_reference", "southeast_reference", "southwest_reference")]
 script = ExtResource("8_t8yr0")
 waves = Array[ExtResource("7_lerny")]([SubResource("Resource_l7348")])
-wave_times_seconds = Array[int]([1])
+wave_times_seconds = Array[int]([10])
 east_reference = NodePath("EAST_REFERENCE")
+west_reference = NodePath("WEST_REFERENCE")
+north_reference = NodePath("NORTH_REFERENCE")
+south_reference = NodePath("SOUTH_REFERENCE")
+northeast_reference = NodePath("NORTHEAST_REFERENCE")
+northwest_reference = NodePath("NORTHWEST_REFERENCE")
+southeast_reference = NodePath("SOUTHEAST_REFERENCE")
+southwest_reference = NodePath("SOUTHWEST_REFERENCE")
 
 [node name="EAST_REFERENCE" type="Node2D" parent="EnemySpawner"]
-position = Vector2(412, 120)
+position = Vector2(519, 128)
+
+[node name="NORTHEAST_REFERENCE" type="Node2D" parent="EnemySpawner"]
+position = Vector2(498, -16)
+
+[node name="NORTHWEST_REFERENCE" type="Node2D" parent="EnemySpawner"]
+position = Vector2(-20, -16)
+
+[node name="NORTH_REFERENCE" type="Node2D" parent="EnemySpawner"]
+position = Vector2(241, -14)
+
+[node name="SOUTH_REFERENCE" type="Node2D" parent="EnemySpawner"]
+position = Vector2(241, 250)
+
+[node name="WEST_REFERENCE" type="Node2D" parent="EnemySpawner"]
+position = Vector2(-39, 128)
+
+[node name="SOUTHWEST_REFERENCE" type="Node2D" parent="EnemySpawner"]
+position = Vector2(-20, 249)
+
+[node name="SOUTHEAST_REFERENCE" type="Node2D" parent="EnemySpawner"]
+position = Vector2(498, 249)
+
+[node name="ProjectileContainer" type="Node2D" parent="."]
+script = ExtResource("10_ds36k")

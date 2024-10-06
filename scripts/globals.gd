@@ -7,8 +7,10 @@ var resource_harvest_rate = 5.
 var current_wave: int = 0
 var main_structures: Array[BuildingTile]
 var ui_canvas: CanvasLayer
+var projectile_container: ProjectileContainer
 
 const GAME_OVER = preload("res://scenes/screens/coccus_destroyed.tscn")
+const VICTORY = preload("res://scenes/screens/victory.tscn")
 
 signal on_nutrition_increased(new_value: int)
 signal on_dna_increased(new_value:int)
@@ -19,6 +21,10 @@ signal on_wave_start
 
 func show_game_over():
   var overlay = GAME_OVER.instantiate()
+  ui_canvas.add_child(overlay)
+  
+func show_victory():
+  var overlay = VICTORY.instantiate()
   ui_canvas.add_child(overlay)
 
 func change_scene(scene: String):

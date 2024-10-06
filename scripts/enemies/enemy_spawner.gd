@@ -61,6 +61,11 @@ func spawn_wave():
   if wave_times_seconds.size() > Globals.current_wave:
     timer.wait_time = wave_times_seconds[Globals.current_wave]
     timer.start()
+  else:
+    while get_tree().get_node_count_in_group("enemy") > 0:
+      await get_tree().process_frame
+    get_tree().paused = true
+    Globals.show_victory()
   
 func _spawn_unit():
   var max = current_wave.spawns.size() - 1 

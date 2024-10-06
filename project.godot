@@ -37,8 +37,10 @@ window/stretch/scale_mode="integer"
 [file_customization]
 
 folder_colors={
+"res://audio/": "red",
 "res://data/": "blue",
 "res://fonts/": "green",
+"res://label_settings/": "green",
 "res://scenes/": "yellow",
 "res://scripts/": "pink",
 "res://sprites/": "green"
@@ -49,6 +51,8 @@ folder_colors={
 2d_physics/layer_1="Buildings"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Etc"
+2d_physics/layer_4="Projectiles"
+2d_physics/layer_5="BuildingRange"
 
 [rendering]
 

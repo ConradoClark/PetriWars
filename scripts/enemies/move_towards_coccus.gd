@@ -22,7 +22,7 @@ func _move():
       continue
     if move_tween: move_tween.kill()
     move_tween = create_tween()
-    var direction = (target.global_position - reference.global_position).normalized()
+    var direction = (target.global_position - reference.global_position + _random_inside_unit_circle()*16).normalized()
     move_tween.tween_property(reference, "position", reference.global_position + (direction * speed), move_time_seconds)
     while move_tween.is_running():
       if not is_moving:
@@ -47,4 +47,7 @@ func _find_coccus() -> Node2D:
       selected = structure
   if selected == null: return null
   return selected
-      
+  
+func _random_inside_unit_circle() -> Vector2:
+    var theta : float = randf() * 2 * PI
+    return Vector2(cos(theta), sin(theta)) * sqrt(randf())
