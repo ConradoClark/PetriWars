@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bjcpo63eubliv"]
+[gd_scene load_steps=41 format=3 uid="uid://bjcpo63eubliv"]
 
 [ext_resource type="Script" path="res://scripts/tiles/building_tile.gd" id="1_hg6h3"]
 [ext_resource type="Resource" uid="uid://cevgq080sqrgy" path="res://data/units/pseudo.tres" id="2_veghe"]
@@ -233,6 +233,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_flq0n"]
+radius = 12.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwotb"]
 radius = 28.0
 
@@ -256,7 +259,7 @@ frame_progress = 0.378058
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_gwotb")
+shape = SubResource("CircleShape2D_flq0n")
 
 [node name="AttackRange" type="Area2D" parent="."]
 collision_layer = 16

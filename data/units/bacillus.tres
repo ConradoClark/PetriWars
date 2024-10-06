@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_0hqjk")
 unit_name = "BACILLUS"
-unit_description = "colony growth agent. +1 HP to all bacteria"
+unit_description = "colony growth agent. makes colony sturdy."
 life = 5
 max_life = 5
 type = 0
