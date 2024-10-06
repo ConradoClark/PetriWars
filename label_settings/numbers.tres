@@ -1,0 +1,12 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://osr6g0okn3r4"]
+
+[ext_resource type="FontFile" uid="uid://btsn55ejc4vra" path="res://fonts/Not Jam UI 12.ttf" id="1_dodw2"]
+
+[resource]
+font = ExtResource("1_dodw2")
+font_size = 12
+font_color = Color(0.670588, 0.580392, 0.478431, 1)
+outline_size = 1
+outline_color = Color(0.572549, 0.34902, 0.427451, 1)
+shadow_color = Color(0.203922, 0.141176, 0.152941, 1)
+shadow_offset = Vector2(0, 2)

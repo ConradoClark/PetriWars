@@ -22,6 +22,7 @@ TileTypes="*res://scripts/tiles/tile_types.gd"
 TileBuildings="*res://scripts/tiles/tile_buildings.gd"
 Globals="*res://scripts/globals.gd"
 UIEvents="*res://scripts/ui/ui_events.gd"
+Stats="*res://scripts/stats.gd"
 
 [display]
 

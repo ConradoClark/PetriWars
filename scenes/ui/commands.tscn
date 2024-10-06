@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8ethyrpd21ln"]
+[gd_scene load_steps=7 format=3 uid="uid://b8ethyrpd21ln"]
 
 [ext_resource type="Texture2D" uid="uid://owsnl8ux8smr" path="res://sprites/ui/border.png" id="1_5dmqc"]
 [ext_resource type="Texture2D" uid="uid://bk0lsp2tc187m" path="res://sprites/ui/border_texture.png" id="2_2ucig"]
 [ext_resource type="FontFile" uid="uid://btsn55ejc4vra" path="res://fonts/Not Jam UI 12.ttf" id="3_lwduh"]
 [ext_resource type="FontFile" uid="uid://bcco8i5wok5h3" path="res://fonts/NotJamChunky8.ttf" id="4_kp7sh"]
-[ext_resource type="Script" path="res://scripts/ui/updateable_label.gd" id="5_xuj57"]
+[ext_resource type="Script" path="res://scripts/ui/updateable_richtext.gd" id="5_xuj57"]
+[ext_resource type="Script" path="res://scripts/ui/command_container.gd" id="6_rh0mk"]
 
 [node name="Commands" type="Control"]
 layout_mode = 3
@@ -66,9 +67,15 @@ theme_override_constants/margin_left = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer"]
 layout_mode = 2
 
-[node name="ObjectName" type="RichTextLabel" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="ObjectName" type="RichTextLabel" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
 clip_contents = false
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.670588, 0.682353, 0.709804, 1)
 theme_override_colors/font_shadow_color = Color(0.152941, 0.0823529, 0.0745098, 1)
@@ -76,7 +83,8 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/normal_font = ExtResource("3_lwduh")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "COCCUS"
+text = "[color=ffb5c2]COCCUS [img]res://sprites/ui/nutrition_resource_icon.png[/img][color=ab947a] 01"
+fit_content = true
 scroll_active = false
 script = ExtResource("5_xuj57")
 
@@ -123,7 +131,8 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/normal_font = ExtResource("4_kp7sh")
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
-text = "[right]grows bacteria"
+text = "[right]hey just a test"
+fit_content = true
 scroll_active = false
 script = ExtResource("5_xuj57")
 type = 3
@@ -137,10 +146,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 9
+theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 5
 
-[node name="CommandName" type="RichTextLabel" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer3"]
+layout_mode = 2
+
+[node name="CommandName" type="RichTextLabel" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer3/VBoxContainer"]
 clip_contents = false
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -155,3 +167,8 @@ scroll_active = false
 script = ExtResource("5_xuj57")
 type = 2
 prefix = "[center]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("6_rh0mk")

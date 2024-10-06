@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb2ncgg0rd30o"]
+
+[ext_resource type="Texture2D" uid="uid://bq1dwlp7hs52i" path="res://sprites/ui/gauge_border.png" id="1_jsvkr"]
+[ext_resource type="Texture2D" uid="uid://n7xyga3i15qk" path="res://sprites/ui/gauge.png" id="2_grvvn"]
+[ext_resource type="Script" path="res://scripts/ui/gauge.gd" id="3_dq5on"]
+
+[node name="ResourceGauge" type="Control" node_paths=PackedStringArray("reference", "gauge")]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_dq5on")
+reference = NodePath(".")
+gauge = NodePath("GaugeBorder/GaugeTexture")
+max_size = 12.0
+ticks = true
+
+[node name="GaugeBorder" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+texture = ExtResource("1_jsvkr")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="GaugeBorder"]
+modulate = Color(1, 1, 1, 0.443137)
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.203922, 0.141176, 0.152941, 1)
+
+[node name="GaugeTexture" type="TextureRect" parent="GaugeBorder"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_grvvn")
+expand_mode = 1
+stretch_mode = 1
+flip_v = true

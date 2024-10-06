@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dskto516mr4sl"]
+[gd_scene load_steps=37 format=3 uid="uid://dskto516mr4sl"]
 
 [ext_resource type="Script" path="res://scripts/tiles/building_tile.gd" id="1_j7rmq"]
 [ext_resource type="Texture2D" uid="uid://crw4rbjrsqhpg" path="res://sprites/bacillus_anim_28x28.png" id="2_7mipv"]
 [ext_resource type="Resource" uid="uid://bil5pfleyshow" path="res://data/units/bacillus.tres" id="2_lexsl"]
+[ext_resource type="Texture2D" uid="uid://bwbcp25ghxh47" path="res://sprites/bacillus_building_28x25.png" id="4_cag03"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6b410"]
 atlas = ExtResource("2_7mipv")
@@ -117,11 +118,130 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3nxp"]
+atlas = ExtResource("4_cag03")
+region = Rect2(0, 0, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx55r"]
+atlas = ExtResource("4_cag03")
+region = Rect2(28, 0, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shcfo"]
+atlas = ExtResource("4_cag03")
+region = Rect2(56, 0, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm4xm"]
+atlas = ExtResource("4_cag03")
+region = Rect2(84, 0, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjppm"]
+atlas = ExtResource("4_cag03")
+region = Rect2(112, 0, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7s7k"]
+atlas = ExtResource("4_cag03")
+region = Rect2(0, 25, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5c4b"]
+atlas = ExtResource("4_cag03")
+region = Rect2(28, 25, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1lsj"]
+atlas = ExtResource("4_cag03")
+region = Rect2(56, 25, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v811q"]
+atlas = ExtResource("4_cag03")
+region = Rect2(84, 25, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp4f3"]
+atlas = ExtResource("4_cag03")
+region = Rect2(112, 25, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxi40"]
+atlas = ExtResource("4_cag03")
+region = Rect2(0, 50, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bqo7"]
+atlas = ExtResource("4_cag03")
+region = Rect2(28, 50, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j2n6"]
+atlas = ExtResource("4_cag03")
+region = Rect2(56, 50, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps56v"]
+atlas = ExtResource("4_cag03")
+region = Rect2(84, 50, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irg2c"]
+atlas = ExtResource("4_cag03")
+region = Rect2(112, 50, 28, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mwck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3nxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx55r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shcfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm4xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjppm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7s7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5c4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1lsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v811q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp4f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxi40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bqo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0j2n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps56v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irg2c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Bacillus" type="Node2D"]
 script = ExtResource("1_j7rmq")
 unit = ExtResource("2_lexsl")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fot26")
 autoplay = "default"
-frame_progress = 0.0226029
+frame_progress = 0.513007
+
+[node name="BuildingSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_3mwck")
+autoplay = "default"
+frame_progress = 0.617434

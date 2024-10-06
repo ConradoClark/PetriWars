@@ -5,9 +5,11 @@
 
 [resource]
 script = ExtResource("2_e36ys")
-unit_name = "Cyano"
+unit_name = "CYANO [img]res://sprites/ui/nutrition_resource_icon.png[/img][color=79927a] 01"
 unit_description = "harvester of nutrition"
 life = 3
 max_life = 3
 type = 0
 commands = Array[ExtResource("1_1j37p")]([])
+tags = Array[String](["building", "cyano", "bacillus_cyano"])
+build_time_seconds = 6.0

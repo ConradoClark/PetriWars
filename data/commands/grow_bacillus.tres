@@ -1,8 +1,35 @@
-[gd_resource type="Resource" script_class="Command" load_steps=2 format=3 uid="uid://c41618tdbjslb"]
+[gd_resource type="Resource" script_class="Command" load_steps=8 format=3 uid="uid://c41618tdbjslb"]
 
+[ext_resource type="Script" path="res://scripts/objects/commands/grow_bacillus.gd" id="1_h7ntc"]
+[ext_resource type="Script" path="res://scripts/objects/command_requirement.gd" id="1_ire2x"]
 [ext_resource type="Script" path="res://scripts/objects/command.gd" id="1_k8itn"]
+[ext_resource type="Texture2D" uid="uid://bmrxleyv3cpsq" path="res://sprites/ui/icons/grow_bacillus_icon.png" id="1_qmgj3"]
+
+[sub_resource type="Resource" id="Resource_ldkq7"]
+script = ExtResource("1_h7ntc")
+
+[sub_resource type="Resource" id="Resource_obt65"]
+script = ExtResource("1_ire2x")
+type = 0
+value = 2
+tag = ""
+
+[sub_resource type="Resource" id="Resource_05mvo"]
+script = ExtResource("1_ire2x")
+type = 2
+value = 1
+tag = "building"
 
 [resource]
 script = ExtResource("1_k8itn")
-command_name = "grow bacillus"
-command_description = ""
+command_name = "GROW BACILLUS"
+command_icon = ExtResource("1_qmgj3")
+command_description = "[img]res://sprites/ui/nutrition_resource_icon.png[/img] 2
+base structure that
+supports the colony"
+validation_msg = "[right][img]res://sprites/ui/nutrition_resource_icon.png[/img] 2
+Has to be built next 
+to another structure."
+requirements = Array[ExtResource("1_ire2x")]([SubResource("Resource_obt65"), SubResource("Resource_05mvo")])
+command_impl = SubResource("Resource_ldkq7")
+arguments = {}

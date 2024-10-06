@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfus7tmwpc4q3"]
+
+[ext_resource type="Script" path="res://scripts/ui/command_button.gd" id="1_d7y2d"]
+[ext_resource type="Texture2D" uid="uid://bmrxleyv3cpsq" path="res://sprites/ui/icons/grow_bacillus_icon.png" id="2_1q8mc"]
+
+[node name="CommandButton" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d7y2d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("2_1q8mc")
+stretch_mode = 3

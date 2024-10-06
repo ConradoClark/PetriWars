@@ -21,3 +21,11 @@ func add_tile(pos: Vector2i, tile: BuildingTile):
 func remove_tile(pos: Vector2i):
   if not tiles.has(pos): return
   tiles.erase(pos)
+  
+func is_adjacent_to_tiles(pos: Vector2i, amount: int, tag: String) -> bool:
+  var count = 0
+  for cell in map_layer.get_surrounding_cells(pos):
+    var tile = get_tile(cell)
+    if not tile: continue
+    if tile.unit.has_tag(tag): count+=1
+  return count >= amount

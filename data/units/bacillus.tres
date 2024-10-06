@@ -5,9 +5,11 @@
 
 [resource]
 script = ExtResource("2_0hqjk")
-unit_name = "Bacillus"
+unit_name = "BACILLUS"
 unit_description = "colony growth agent"
 life = 5
 max_life = 5
 type = 0
 commands = Array[ExtResource("1_4sgyh")]([])
+tags = Array[String](["building", "bacillus", "bacillus_cyano"])
+build_time_seconds = 4.0

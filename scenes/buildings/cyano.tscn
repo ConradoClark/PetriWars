@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8tlib2626qtc"]
+[gd_scene load_steps=38 format=3 uid="uid://c8tlib2626qtc"]
 
 [ext_resource type="Script" path="res://scripts/tiles/building_tile.gd" id="1_ccjvr"]
 [ext_resource type="Resource" uid="uid://dtvchin2wgukd" path="res://data/units/cyano.tres" id="2_cv3bn"]
 [ext_resource type="Texture2D" uid="uid://bmd7qm6kur2e5" path="res://sprites/cyano_anim_38x36.png" id="2_ohmc8"]
+[ext_resource type="Texture2D" uid="uid://drgamr8kevgev" path="res://sprites/cyano_building_28x27.png" id="4_i23c3"]
+[ext_resource type="Script" path="res://scripts/objects/buildings/generate_nutrition.gd" id="4_o2v2o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obmxv"]
 atlas = ExtResource("2_ohmc8")
@@ -117,11 +119,135 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kymj"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(0, 0, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvr5e"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(28, 0, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsgrv"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(56, 0, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj08i"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(84, 0, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5t0h"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(112, 0, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8tn4"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(0, 27, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mo3c"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(28, 27, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6asl"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(56, 27, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hxso"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(84, 27, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6dwx"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(112, 27, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6wds"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(0, 54, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruqk1"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(28, 54, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nmlh"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(56, 54, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g206"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(84, 54, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8a0i"]
+atlas = ExtResource("4_i23c3")
+region = Rect2(112, 54, 28, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jy4hf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kymj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvr5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsgrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bj08i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5t0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8tn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mo3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6asl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hxso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6dwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6wds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruqk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nmlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g206")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8a0i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Cyano" type="Node2D"]
 script = ExtResource("1_ccjvr")
 unit = ExtResource("2_cv3bn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_foisk")
 autoplay = "default"
 frame_progress = 0.66279
+
+[node name="BuildingSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_jy4hf")
+autoplay = "default"
+frame_progress = 0.630454
+
+[node name="GenerateNutrition" type="Node" parent="." node_paths=PackedStringArray("reference")]
+script = ExtResource("4_o2v2o")
+reference = NodePath("..")
+amount = 1

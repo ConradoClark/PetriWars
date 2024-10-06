@@ -18,15 +18,17 @@ func _ready():
   shape = clickable_area.shape_owner_get_shape(0,0)
   shape_rect = shape.get_rect()
   pass
-
-func _input(event):
-  if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-    if not event.is_pressed(): return
-    var mouse_pos = get_global_mouse_position()
+  
+func reselect():
+  _select(TileManager.map_layer.to_global(\
+    TileManager.map_layer.map_to_local(Globals.last_selected_pos)))
+  
+func _select(pos: Vector2):
     var rect = Rect2(shape_rect.position + shape_owner.global_position, shape_rect.size)
-    if rect.has_point(mouse_pos):
-      var local = TileManager.map_layer.to_local(mouse_pos)
+    if rect.has_point(pos):
+      var local = TileManager.map_layer.to_local(pos)
       var map_pos = TileManager.map_layer.local_to_map(local)
+      Globals.last_selected_pos = map_pos
       var tile = TileManager.get_tile(map_pos)
       green.visible = tile != null
       yellow.visible = not green.visible
@@ -35,3 +37,9 @@ func _input(event):
         UIEvents.selected_object_changed.emit(tile.unit)
       else:
         UIEvents.selected_object_changed.emit(EMPTY_TILE)
+
+func _input(event):
+  if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+    if not event.is_pressed(): return
+    var mouse_pos = get_global_mouse_position()
+    _select(mouse_pos)

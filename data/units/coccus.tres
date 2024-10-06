@@ -5,9 +5,11 @@
 
 [resource]
 script = ExtResource("2_qq81y")
-unit_name = "[color=ffb5c2]Coccus"
+unit_name = "[color=ffb5c2]COCCUS [img]res://sprites/ui/nutrition_resource_icon.png[/img][color=79927a] 01"
 unit_description = "nexus of the hive mind"
 life = 10
 max_life = 10
 type = 0
 commands = Array[ExtResource("1_2g0jk")]([])
+tags = Array[String](["building"])
+build_time_seconds = 0.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dh7bdesc7w6xe"]
+[gd_scene load_steps=21 format=3 uid="uid://dh7bdesc7w6xe"]
 
 [ext_resource type="Script" path="res://scripts/tiles/building_tile.gd" id="1_hrsju"]
 [ext_resource type="Texture2D" uid="uid://ctumuoeekdw31" path="res://sprites/coccus_anim_41x37.png" id="2_1d228"]
 [ext_resource type="Resource" uid="uid://cv47juhh0ctj4" path="res://data/units/coccus.tres" id="2_5atkx"]
+[ext_resource type="Script" path="res://scripts/objects/buildings/generate_nutrition.gd" id="4_bn64m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_esepm"]
 atlas = ExtResource("2_1d228")
@@ -121,7 +122,17 @@ animations = [{
 script = ExtResource("1_hrsju")
 unit = ExtResource("2_5atkx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3dhi2")
 autoplay = "default"
 frame_progress = 0.749126
+
+[node name="BuildingSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3dhi2")
+autoplay = "default"
+frame_progress = 0.749126
+
+[node name="GenerateNutrition" type="Node" parent="." node_paths=PackedStringArray("reference")]
+script = ExtResource("4_bn64m")
+reference = NodePath("..")
+amount = 1
