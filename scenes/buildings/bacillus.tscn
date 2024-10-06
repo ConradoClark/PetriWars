@@ -1,9 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://dskto516mr4sl"]
+[gd_scene load_steps=39 format=3 uid="uid://dskto516mr4sl"]
 
 [ext_resource type="Script" path="res://scripts/tiles/building_tile.gd" id="1_j7rmq"]
 [ext_resource type="Texture2D" uid="uid://crw4rbjrsqhpg" path="res://sprites/bacillus_anim_28x28.png" id="2_7mipv"]
 [ext_resource type="Resource" uid="uid://bil5pfleyshow" path="res://data/units/bacillus.tres" id="2_lexsl"]
 [ext_resource type="Texture2D" uid="uid://bwbcp25ghxh47" path="res://sprites/bacillus_building_28x25.png" id="4_cag03"]
+[ext_resource type="Script" path="res://scripts/objects/buildings/bacillus_buff.gd" id="5_jjvpq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6b410"]
 atlas = ExtResource("2_7mipv")
@@ -253,3 +254,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_rjuib")
+
+[node name="BacillusBuff" type="Node" parent="."]
+script = ExtResource("5_jjvpq")
+value = 1

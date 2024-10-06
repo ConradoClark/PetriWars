@@ -18,6 +18,7 @@ func _exit_tree():
 
 func damage(amount: int ):
   if not alive: return
+  SoundManager.play_sound(Globals.ENEMY_HURT_SFX, randf_range(0.9,1.1))
   life = clamp(life - 1, 0 , max_life)
   on_damage.emit(amount)
   if life == 0:

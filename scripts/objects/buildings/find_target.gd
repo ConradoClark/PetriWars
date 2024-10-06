@@ -21,7 +21,7 @@ func _check():
     if target == null or not target.alive:
       has_target = false
       target = null
-    return
+    else: return
   var bodies = area.get_overlapping_bodies()
   for item in bodies:
     var enemy = item as Enemy

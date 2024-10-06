@@ -199,4 +199,5 @@ text = "BACK TO MAIN MENU"
 
 [node name="Victory" type="Node" parent="." node_paths=PackedStringArray("main_menu")]
 script = ExtResource("5_a2mmf")
+main_menu_scene = "res://scenes/screens/main_menu.tscn"
 main_menu = NodePath("../MarginContainer/VBoxContainer/MainMenu")

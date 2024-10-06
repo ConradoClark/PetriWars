@@ -8,9 +8,14 @@ func _init():
   call_deferred("add_nutrition", 0)
   
 func reset_stats():
-  nutrition = 30
+  nutrition = 3
   dna = 0
   enemies_killed = 0 
+  call_deferred("_update_counters")
+  
+func _update_counters():
+  Globals.on_nutrition_increased.emit(nutrition)
+  Globals.on_dna_increased.emit(dna)
 
 func add_nutrition(amount: int):
   nutrition += amount

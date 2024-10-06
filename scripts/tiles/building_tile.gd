@@ -10,6 +10,7 @@ var layer: TileMapLayer
 var cell_pos: Vector2i
 var selected: bool
 var life: int
+var max_life: int
 var built: bool = false
 var alive:bool = true
 
@@ -30,11 +31,22 @@ func _ready():
   layer = get_parent()
   cell_pos = layer.local_to_map(position)
   life = unit.max_life
+  max_life = unit.max_life
   TileManager.add_tile(cell_pos, self)
   UIEvents.selected_object_changed.connect(_selected_object_changed)
   call_deferred("_initialize_life_gauge")
   call_deferred("_build")
+  Globals.on_max_life_up.connect(_on_max_life_up)
+  Globals.on_max_life_down.connect(_on_max_life_down)
   
+func _on_max_life_up(amount: int):
+  max_life += amount
+  life += amount
+  
+func _on_max_life_down(amount: int):
+  max_life -= amount
+  life -= amount
+
 func _build():
   if unit.build_time_seconds == 0: 
     if building_sprite: building_sprite.visible = false
@@ -57,7 +69,7 @@ func _on_build_finished():
 func _initialize_life_gauge():
   life_gauge = LIFE_GAUGE.instantiate() as Gauge
   life_gauge.starting_value = 1.
-  life_gauge.visible = selected or life < unit.max_life
+  life_gauge.visible = selected or (life < max_life)
   add_child(life_gauge)
   call_deferred("_reposition_life_gauge")
   
@@ -68,16 +80,20 @@ func _setup_build_gauge():
   build_gauge.global_position = global_position + build_gauge_offset
   build_gauge.timer.timeout.connect(_on_build_finished, CONNECT_ONE_SHOT)
 
-func _selected_object_changed(unit: Unit):
-  selected = Globals.last_selected_pos == cell_pos
-  if life_gauge: life_gauge.visible = selected or life < unit.max_life
+func _selected_object_changed(other: Unit):
+  var new_value = Globals.last_selected_pos == cell_pos
+  if selected == new_value: return
+  selected = new_value
+  if life_gauge: 
+    life_gauge.visible = selected or (life < max_life)
   selected_changed.emit()
   
 func damage(amount: int):
-  life = clamp(life-amount, 0, unit.max_life)
-  life_gauge.set_value(life / float(unit.max_life))
+  SoundManager.play_sound(Globals.BUILDING_HURT_SFX, randf_range(0.9,1.1))
+  life = clamp(life-amount, 0, max_life)
+  life_gauge.set_value(life / float(max_life))
   on_damage.emit(amount)
-  life_gauge.visible = selected or life < unit.max_life
+  life_gauge.visible = selected or (life < max_life)
   if life == 0:
     alive = false
     on_death.emit()

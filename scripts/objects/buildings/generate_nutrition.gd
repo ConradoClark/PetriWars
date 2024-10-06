@@ -35,3 +35,6 @@ func _on_timeout():
   gauge.seconds = Globals.resource_harvest_rate
   gauge.visible = reference.selected
   add_child(gauge)
+  var effect = Globals.NUTRITION_RESOURCE_UP.instantiate()
+  effect.global_position = reference.global_position
+  Globals.projectile_container.add_child(effect)

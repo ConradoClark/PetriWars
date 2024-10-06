@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgr4m8iv6b4qy"]
+[gd_scene load_steps=11 format=3 uid="uid://dpr5t0y874b0a"]
 
-[ext_resource type="Texture2D" uid="uid://owsnl8ux8smr" path="res://sprites/ui/border.png" id="1_6c1rh"]
-[ext_resource type="Texture2D" uid="uid://bk0lsp2tc187m" path="res://sprites/ui/border_texture.png" id="2_n45l8"]
-[ext_resource type="FontFile" uid="uid://btsn55ejc4vra" path="res://fonts/Not Jam UI 12.ttf" id="3_51ko7"]
-[ext_resource type="Script" path="res://scripts/ui/game_over.gd" id="4_yem2w"]
+[ext_resource type="Texture2D" uid="uid://bmque7vvwqdq" path="res://sprites/main_menu.png" id="1_rvmgi"]
+[ext_resource type="Texture2D" uid="uid://ncxkc0gpx7k1" path="res://sprites/title.png" id="2_cjph2"]
+[ext_resource type="FontFile" uid="uid://btsn55ejc4vra" path="res://fonts/Not Jam UI 12.ttf" id="4_rh77y"]
+[ext_resource type="Script" path="res://scripts/set_music.gd" id="5_5exhy"]
+[ext_resource type="Script" path="res://scripts/ui/victory.gd" id="5_owx6c"]
+[ext_resource type="AudioStream" uid="uid://ce504n5w5nmed" path="res://audio/songs/main_menu.ogg" id="6_fa7jt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_klo4w"]
 
@@ -49,7 +51,7 @@ corner_radius_bottom_left = 8
 corner_detail = 1
 anti_aliasing = false
 
-[node name="CoccusDestroyed" type="Control"]
+[node name="MainMenu" type="Control"]
 process_mode = 3
 z_index = 500
 layout_mode = 3
@@ -59,7 +61,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.623529)
 layout_mode = 1
 anchors_preset = 15
@@ -67,66 +69,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.152941, 0.0823529, 0.0745098, 1)
+texture = ExtResource("1_rvmgi")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_6c1rh")
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
-show_behind_parent = true
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_bottom = 3
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 48
 
-[node name="TextureRect" type="NinePatchRect" parent="NinePatchRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
-texture = ExtResource("2_n45l8")
-patch_margin_left = 10
-patch_margin_top = 3
-patch_margin_right = 10
-patch_margin_bottom = 3
-axis_stretch_horizontal = 1
 
-[node name="ObjectName" type="RichTextLabel" parent="NinePatchRect"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_cjph2")
+stretch_mode = 3
+
+[node name="WinText" type="RichTextLabel" parent="MarginContainer2/VBoxContainer"]
 clip_contents = false
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.670588, 0.682353, 0.709804, 1)
 theme_override_colors/font_shadow_color = Color(0.152941, 0.0823529, 0.0745098, 1)
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/normal_font = ExtResource("3_51ko7")
+theme_override_fonts/normal_font = ExtResource("4_rh77y")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
-text = "[center][wave]YOUR COCCUS HAS BEEN DESTROYED![/wave]
-
-THE BACTERIA COULDN'T EVOLVE
-AND ESCAPE THE PETRI DISH
+text = "[center]
+EVOLVE YOUR BACTERIA AND BE THE
+SURVIVOR OF THE PETRI DISH
 "
 fit_content = true
 scroll_active = false
@@ -142,37 +118,28 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 128
 theme_override_constants/margin_right = 128
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TryAgain" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_51ko7")
+theme_override_fonts/font = ExtResource("4_rh77y")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_klo4w")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pqbkf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dtwb2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jur20")
-text = "TRY AGAIN"
+text = "START GAME"
 
-[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_51ko7")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/focus = SubResource("StyleBoxEmpty_klo4w")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pqbkf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_dtwb2")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jur20")
-text = "BACK TO MAIN MENU"
+[node name="Victory" type="Node" parent="." node_paths=PackedStringArray("main_menu")]
+script = ExtResource("5_owx6c")
+main_menu_scene = "res://scenes/base.tscn"
+main_menu = NodePath("../MarginContainer/VBoxContainer/StartGame")
 
-[node name="GameOver" type="Node" parent="." node_paths=PackedStringArray("try_again", "main_menu")]
-script = ExtResource("4_yem2w")
-game_scene = "res://scenes/base.tscn"
-main_menu_scene = "res://scenes/screens/main_menu.tscn"
-try_again = NodePath("../MarginContainer/VBoxContainer/TryAgain")
-main_menu = NodePath("../MarginContainer/VBoxContainer/MainMenu")
+[node name="Node" type="Node" parent="."]
+script = ExtResource("5_5exhy")
+song = ExtResource("6_fa7jt")

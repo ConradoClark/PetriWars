@@ -34,7 +34,7 @@ func _attack():
   while target != null and target.alive:
     attack_tween = create_tween()
     var original_position = reference.global_position
-    attack_tween.tween_property(reference, "position", target.global_position, 1.)\
+    attack_tween.tween_property(reference, "position", target.global_position, 1.5)\
       .set_ease(Tween.EASE_IN)\
       .set_trans(Tween.TRANS_ELASTIC)
     await attack_tween.finished

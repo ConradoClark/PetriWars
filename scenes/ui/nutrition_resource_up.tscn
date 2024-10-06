@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce3lpwbwgwv0j"]
+
+[ext_resource type="Script" path="res://scripts/objects/nutrition_resource_up.gd" id="1_1ojgp"]
+[ext_resource type="Texture2D" uid="uid://b60jwu332iyim" path="res://sprites/ui/nutrition_resource_up.png" id="1_7uqe6"]
+
+[node name="NutritionResourceUp" type="Sprite2D"]
+texture = ExtResource("1_7uqe6")
+script = ExtResource("1_1ojgp")

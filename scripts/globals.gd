@@ -12,10 +12,18 @@ var projectile_container: ProjectileContainer
 const GAME_OVER = preload("res://scenes/screens/coccus_destroyed.tscn")
 const VICTORY = preload("res://scenes/screens/victory.tscn")
 
+const BUILDING_HURT_SFX = preload("res://audio/sfx/building_hut.ogg")
+const ENEMY_HURT_SFX = preload("res://audio/sfx/enemy_hurt.ogg")
+
+const NUTRITION_RESOURCE_UP = preload("res://scenes/ui/nutrition_resource_up.tscn")
+
 signal on_nutrition_increased(new_value: int)
 signal on_dna_increased(new_value:int)
 signal on_nutrition_decreased(new_value: int)
 signal on_dna_decreased(new_value:int)
+
+signal on_max_life_up(amount: int)
+signal on_max_life_down(amount:int)
 
 signal on_wave_start
 

@@ -22,7 +22,17 @@ var spawn_rng_radius = 35.
 @export var southeast_reference: Node2D
 @export var southwest_reference: Node2D
 
+@export var east_arrow: AnimatedSprite2D
+@export var west_arrow: AnimatedSprite2D
+@export var north_arrow: AnimatedSprite2D
+@export var south_arrow: AnimatedSprite2D
+@export var northwest_arrow: AnimatedSprite2D
+@export var northeast_arrow: AnimatedSprite2D
+@export var southwest_arrow: AnimatedSprite2D
+@export var southeast_arrow: AnimatedSprite2D
+
 func _ready():
+  _show_next_wave_arrows(0)
   timer = Timer.new()
   timer.wait_time = wave_times_seconds[Globals.current_wave]
   timer.autostart = true
@@ -36,7 +46,7 @@ func _ready():
   add_child(spawn_timer)
   add_child(timer)
   add_child(tick_timer)
-
+  
 func _tick_timeout():
   UIEvents.tick_timer.emit(timer.time_left)
 
@@ -47,6 +57,28 @@ func _timer_timeout():
   Globals.current_wave+=1
   Globals.on_wave_start.emit()
   
+func _show_next_wave_arrows(wave_number: int):
+  east_arrow.visible = false
+  west_arrow.visible = false
+  north_arrow.visible = false
+  south_arrow.visible = false
+  northwest_arrow.visible = false
+  northeast_arrow.visible = false
+  southwest_arrow.visible = false
+  southeast_arrow.visible = false
+  if wave_number > waves.size(): return
+  var wave = waves[wave_number]
+  for dir in wave.directions:
+    match dir:
+      EnemyWave.Direction.WEST: west_arrow.visible = true
+      EnemyWave.Direction.EAST: east_arrow.visible = true
+      EnemyWave.Direction.NORTH: north_arrow.visible = true
+      EnemyWave.Direction.SOUTH: south_arrow.visible = true
+      EnemyWave.Direction.NORTHWEST: northwest_arrow.visible = true
+      EnemyWave.Direction.NORTHEAST: northeast_arrow.visible = true
+      EnemyWave.Direction.SOUTHWEST: southwest_arrow.visible = true
+      EnemyWave.Direction.SOUTHEAST: southeast_arrow.visible = true
+
 func spawn_wave():
   var wave = waves[Globals.current_wave]
   current_wave = wave.duplicate()
@@ -59,8 +91,10 @@ func spawn_wave():
   await get_tree().create_timer(wave.duration_seconds + wave.wait_time_seconds).timeout
   spawn_timer.stop()
   if wave_times_seconds.size() > Globals.current_wave:
+    _show_next_wave_arrows(Globals.current_wave)
     timer.wait_time = wave_times_seconds[Globals.current_wave]
     timer.start()
+    tick_timer.start()
   else:
     while get_tree().get_node_count_in_group("enemy") > 0:
       await get_tree().process_frame
@@ -79,6 +113,7 @@ func _spawn_unit():
     return
   for spawn in current_wave.spawns:
     if spawn.amount <=0: continue
+    spawn.amount-=1
     _spawn_at_direction(spawn.prefab_path, direction)
     return
     

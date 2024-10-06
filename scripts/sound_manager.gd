@@ -11,7 +11,7 @@ var sample_loops = {}
 
 var target_db_music: float = -12.
 
-func set_music(song: AudioStream, muffled: AudioStream):
+func set_music(song: AudioStream):
   if current_music == song: return
   await get_tree().create_timer(0.5).timeout
   current_music = song
@@ -68,7 +68,7 @@ func _ready():
 func _audio_finished(stream: AudioStreamPlayer):
  free.append(stream)
 
-func play_sound(sound: AudioStream, volume = 0, pitch_scale: float = 1., save_player: bool = false):
+func play_sound(sound: AudioStream, pitch_scale: float = 1., volume = 0,  save_player: bool = false):
   if free.is_empty(): return
   var player = free.pop_front() as AudioStreamPlayer
   player.stream = sound
