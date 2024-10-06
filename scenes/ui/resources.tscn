@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://wtyjtccllwa"]
+[gd_scene load_steps=9 format=3 uid="uid://wtyjtccllwa"]
 
 [ext_resource type="Texture2D" uid="uid://owsnl8ux8smr" path="res://sprites/ui/border.png" id="1_nu35q"]
 [ext_resource type="Texture2D" uid="uid://bk0lsp2tc187m" path="res://sprites/ui/border_texture.png" id="2_2anap"]
@@ -6,6 +6,8 @@
 [ext_resource type="LabelSettings" uid="uid://osr6g0okn3r4" path="res://label_settings/numbers.tres" id="4_82hn2"]
 [ext_resource type="Texture2D" uid="uid://c4eyib550nt6b" path="res://sprites/ui/dna_resource.png" id="5_0swk5"]
 [ext_resource type="Script" path="res://scripts/ui/updateable_label.gd" id="5_ye8pw"]
+[ext_resource type="FontFile" uid="uid://bcco8i5wok5h3" path="res://fonts/NotJamChunky8.ttf" id="7_fu4bk"]
+[ext_resource type="Script" path="res://scripts/ui/updateable_richtext.gd" id="8_mtv7l"]
 
 [node name="Resources" type="Control"]
 layout_mode = 3
@@ -98,3 +100,33 @@ vertical_alignment = 2
 script = ExtResource("5_ye8pw")
 type = 5
 starting_value = "00"
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_right = 2
+
+[node name="NextWaveLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer/TextureRect/MarginContainer2"]
+custom_minimum_size = Vector2(300, 12)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/default_color = Color(0.615686, 0.647059, 0.572549, 1)
+theme_override_colors/font_outline_color = Color(0.152941, 0.0823529, 0.0745098, 1)
+theme_override_colors/font_shadow_color = Color(0.211765, 0.14902, 0.12549, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("7_fu4bk")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[right][color=ffa7b9]WAVE 1[/color] IN [color=ffa7b9]5[/color] SECONDS"
+fit_content = true
+scroll_active = false
+script = ExtResource("8_mtv7l")
+type = 7
+prefix = "[right]"

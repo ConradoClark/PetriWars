@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfnwpgdutys1j"]
+[gd_scene load_steps=10 format=3 uid="uid://bfnwpgdutys1j"]
 
 [ext_resource type="TileSet" uid="uid://t2qr70nths0p" path="res://tileset/main_tileset.tres" id="1_igomx"]
 [ext_resource type="Texture2D" uid="uid://do0jse13qxu3b" path="res://sprites/ui/grid.png" id="1_joy1x"]
 [ext_resource type="PackedScene" uid="uid://sjjuq2b71h7i" path="res://scenes/ui/selection.tscn" id="2_hxa7r"]
 [ext_resource type="Script" path="res://scripts/tiles/map_layer_setter.gd" id="3_hjse1"]
 [ext_resource type="PackedScene" uid="uid://csdpcys3vjige" path="res://scenes/ui/ui_canvas.tscn" id="5_dfy5f"]
+[ext_resource type="PackedScene" uid="uid://dpj7cu81mlcno" path="res://scenes/enemies/virus_1.tscn" id="6_slffe"]
+[ext_resource type="PackedScene" uid="uid://b555mh5xfpm46" path="res://scenes/enemies/virus_1_yellow.tscn" id="7_pwa0v"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_spawner.gd" id="8_t8yr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30652"]
 size = Vector2(479, 199)
@@ -36,3 +39,13 @@ position = Vector2(239.5, 122.5)
 shape = SubResource("RectangleShape2D_30652")
 
 [node name="UiCanvas" parent="." instance=ExtResource("5_dfy5f")]
+
+[node name="Virus1" parent="." instance=ExtResource("6_slffe")]
+position = Vector2(399, 122)
+
+[node name="Virus2" parent="." instance=ExtResource("7_pwa0v")]
+position = Vector2(417, 139)
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("8_t8yr0")
+wave_times_seconds = Array[int]([20])

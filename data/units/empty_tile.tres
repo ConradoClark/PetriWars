@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Unit" load_steps=5 format=3 uid="uid://dnk7dvw246oph"]
+[gd_resource type="Resource" script_class="Unit" load_steps=6 format=3 uid="uid://dnk7dvw246oph"]
 
 [ext_resource type="Script" path="res://scripts/objects/command.gd" id="1_jfg3d"]
 [ext_resource type="Resource" uid="uid://c41618tdbjslb" path="res://data/commands/grow_bacillus.tres" id="2_mw4na"]
 [ext_resource type="Script" path="res://scripts/objects/unit.gd" id="2_tp84q"]
 [ext_resource type="Resource" uid="uid://yqsbe3popohw" path="res://data/commands/grow_cyano.tres" id="3_y21bw"]
+[ext_resource type="Resource" uid="uid://dob1holhfvngu" path="res://data/commands/grow_pseudo.tres" id="4_suyyo"]
 
 [resource]
 script = ExtResource("2_tp84q")
@@ -12,5 +13,6 @@ unit_description = "can grow bacteria"
 life = 0
 max_life = 0
 type = 1
-commands = Array[ExtResource("1_jfg3d")]([ExtResource("2_mw4na"), ExtResource("3_y21bw")])
+commands = Array[ExtResource("1_jfg3d")]([ExtResource("2_mw4na"), ExtResource("3_y21bw"), ExtResource("4_suyyo")])
 tags = Array[String]([])
+build_time_seconds = 2.0

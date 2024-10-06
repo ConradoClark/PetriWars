@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b555mh5xfpm46"]
+
+[ext_resource type="Texture2D" uid="uid://cetsojdd7k2rl" path="res://sprites/virus_1_yellow.png" id="1_66kti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdxcw"]
+atlas = ExtResource("1_66kti")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtskn"]
+atlas = ExtResource("1_66kti")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i82x"]
+atlas = ExtResource("1_66kti")
+region = Rect2(0, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa5st"]
+atlas = ExtResource("1_66kti")
+region = Rect2(10, 10, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qrrmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdxcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtskn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8i82x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa5st")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Virus1" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qrrmq")
+autoplay = "default"
+frame_progress = 0.508262

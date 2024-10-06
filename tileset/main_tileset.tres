@@ -1,14 +1,16 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://t2qr70nths0p"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://t2qr70nths0p"]
 
 [ext_resource type="PackedScene" uid="uid://dh7bdesc7w6xe" path="res://scenes/buildings/coccus.tscn" id="1_nmmog"]
 [ext_resource type="PackedScene" uid="uid://dskto516mr4sl" path="res://scenes/buildings/bacillus.tscn" id="2_17qbt"]
 [ext_resource type="PackedScene" uid="uid://c8tlib2626qtc" path="res://scenes/buildings/cyano.tscn" id="3_fgkyj"]
+[ext_resource type="PackedScene" uid="uid://bjcpo63eubliv" path="res://scenes/buildings/pseudo.tscn" id="4_y2hky"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6l47h"]
 resource_name = "buildings"
 scenes/1/scene = ExtResource("1_nmmog")
 scenes/2/scene = ExtResource("2_17qbt")
 scenes/3/scene = ExtResource("3_fgkyj")
+scenes/4/scene = ExtResource("4_y2hky")
 
 [resource]
 sources/4 = SubResource("TileSetScenesCollectionSource_6l47h")

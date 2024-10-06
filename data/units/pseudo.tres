@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=3 format=3 uid="uid://cevgq080sqrgy"]
+
+[ext_resource type="Script" path="res://scripts/objects/command.gd" id="1_mw2h4"]
+[ext_resource type="Script" path="res://scripts/objects/unit.gd" id="2_1d2tv"]
+
+[resource]
+script = ExtResource("2_1d2tv")
+unit_name = "PSEUDO"
+unit_description = "basic defense mechanism"
+life = 5
+max_life = 5
+type = 0
+commands = Array[ExtResource("1_mw2h4")]([])
+tags = Array[String](["building", "pseudo", "attack"])
+build_time_seconds = 8.0

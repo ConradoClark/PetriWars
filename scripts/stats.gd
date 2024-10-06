@@ -1,6 +1,6 @@
 extends Node
 
-var nutrition: int = 3
+var nutrition: int = 30
 var dna: int
 var enemies_killed: int
 

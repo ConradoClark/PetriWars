@@ -27,9 +27,9 @@ command_icon = ExtResource("1_t73q6")
 command_description = "[img]res://sprites/ui/nutrition_resource_icon.png[/img] 3
 green bacteria that
 harvests nutrients"
-validation_msg = "[right][img]res://sprites/ui/nutrition_resource_icon.png[/img] 3
-Has to be built next 
-to a Bacillus or Cyano"
+validation_msg = "COSTS [img]res://sprites/ui/nutrition_resource_icon.png[/img] 3
+HAS TO BE BUILT NEXT
+TO A BACILLUS OR A CYANO"
 requirements = Array[ExtResource("2_mmv2u")]([SubResource("Resource_obt65"), SubResource("Resource_05mvo")])
 command_impl = SubResource("Resource_foupa")
 arguments = {}

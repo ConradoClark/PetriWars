@@ -245,7 +245,7 @@ frame_progress = 0.66279
 visible = false
 sprite_frames = SubResource("SpriteFrames_jy4hf")
 autoplay = "default"
-frame_progress = 0.630454
+frame_progress = 0.265166
 
 [node name="GenerateNutrition" type="Node" parent="." node_paths=PackedStringArray("reference")]
 script = ExtResource("4_o2v2o")

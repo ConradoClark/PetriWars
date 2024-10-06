@@ -27,9 +27,9 @@ command_icon = ExtResource("1_qmgj3")
 command_description = "[img]res://sprites/ui/nutrition_resource_icon.png[/img] 2
 base structure that
 supports the colony"
-validation_msg = "[right][img]res://sprites/ui/nutrition_resource_icon.png[/img] 2
-Has to be built next 
-to another structure."
+validation_msg = "COSTS [img]res://sprites/ui/nutrition_resource_icon.png[/img] 2
+HAS TO BE BUILT NEXT
+TO ANOTHER BACTERIA."
 requirements = Array[ExtResource("1_ire2x")]([SubResource("Resource_obt65"), SubResource("Resource_05mvo")])
 command_impl = SubResource("Resource_ldkq7")
 arguments = {}

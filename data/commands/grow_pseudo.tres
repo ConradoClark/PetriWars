@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Command" load_steps=8 format=3 uid="uid://dob1holhfvngu"]
+
+[ext_resource type="Texture2D" uid="uid://cd0js2fffoy8c" path="res://sprites/ui/icons/grow_pseudo_icon.png" id="1_0rjo4"]
+[ext_resource type="Script" path="res://scripts/objects/commands/grow_pseudo.gd" id="2_qd3ij"]
+[ext_resource type="Script" path="res://scripts/objects/command_requirement.gd" id="3_iaktn"]
+[ext_resource type="Script" path="res://scripts/objects/command.gd" id="4_k461y"]
+
+[sub_resource type="Resource" id="Resource_xt1oa"]
+script = ExtResource("2_qd3ij")
+
+[sub_resource type="Resource" id="Resource_obt65"]
+script = ExtResource("3_iaktn")
+type = 0
+value = 10
+tag = ""
+
+[sub_resource type="Resource" id="Resource_05mvo"]
+script = ExtResource("3_iaktn")
+type = 2
+value = 2
+tag = "bacillus"
+
+[resource]
+script = ExtResource("4_k461y")
+command_name = "GROW PSEUDO"
+command_icon = ExtResource("1_0rjo4")
+command_description = "[img]res://sprites/ui/nutrition_resource_icon.png[/img] 10
+phagocytes that attack
+hostile organelles"
+validation_msg = "COSTS [img]res://sprites/ui/nutrition_resource_icon.png[/img] 10
+HAS TO BE BUILT
+NEXT TO 2 BACILLUS"
+requirements = Array[ExtResource("3_iaktn")]([SubResource("Resource_obt65"), SubResource("Resource_05mvo")])
+command_impl = SubResource("Resource_xt1oa")
+arguments = {}
